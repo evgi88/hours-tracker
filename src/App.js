@@ -23,7 +23,7 @@ function calculateHours() {
     .map(parseTimeEntry)
     .reduce((minutes1, minutes2) => minutes1 + minutes2);
   
-  alert(hourEnteries);
+  alert(hourEnteries / 60);
 }
 
 function parseTimeEntry(time) {
