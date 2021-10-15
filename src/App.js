@@ -1,3 +1,5 @@
+import React from 'react';
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -9,6 +11,7 @@ function App() {
         <h1>
           Welcome to hours tracker!
         </h1>
+        <Calendar />
         Input your work hours: <input type="text" id="hourEnteries"></input>
         <button onClick={calculateHours}>Get total hours</button>
       </header>
@@ -31,6 +34,24 @@ function parseTimeEntry(time) {
   let minutes = parseInt(time.split(":")[1]);
 
   return hours * 60 + minutes;
+}
+
+const CurrentDate = () => {
+  return(
+    <div>
+      <h2>Todays date: {Date()}</h2>
+    </div>
+  )
+}
+
+class Calendar extends React.Component {
+  render() {
+    return(
+      <div>
+        <CurrentDate />
+      </div>
+    )
+  }
 }
 
 export default App;
