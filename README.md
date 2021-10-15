@@ -4,12 +4,7 @@ This project is going to be a web-app to track hours worked.
 
 ## Code Example
 
-Right now there's a simple version that takes data from CLI and displays result as a response to a GET request. 
-To run the project:
-``` 
-npm start time1 time2 time3 ...
-```
-Times need to be in the format of hh:mm. 
+Placeholder
 
 ## Motivation
 
