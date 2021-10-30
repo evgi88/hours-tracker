@@ -20,13 +20,15 @@ function App() {
 }
 
 function calculateHours() {
-  var hourEnteries = document.getElementById("hourEnteries")
+  var totalMinutes = document.getElementById("hourEnteries")
     .value
     .split(" ")
     .map(parseTimeEntry)
     .reduce((minutes1, minutes2) => minutes1 + minutes2);
   
-  alert(hourEnteries / 60);
+  let minutes = totalMinutes % 60;
+  let hours = (totalMinutes - minutes) / 60   
+  alert(`Total hours: ${hours}:${minutes}`);
 }
 
 function parseTimeEntry(time) {
