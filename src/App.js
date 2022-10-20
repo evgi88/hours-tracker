@@ -12,7 +12,8 @@ function App() {
           Welcome to hours tracker!
         </h1>
         <Calendar />
-        Input your work hours: <input type="text" id="hourEnteries"></input>
+        <label>Inpuput the hours your worked each day in military time format and separated by spaces:</label>
+        <input type="text" id="hourEnteries" style={{width: "185px"}} placeholder='08:00 09:00 08:30 06:15 08:15'></input>
         <button onClick={calculateHours}>Get total hours</button>
       </header>
     </div>
