@@ -2,6 +2,7 @@ import React from 'react';
 
 import logo from './logo.svg';
 import './App.css';
+import { Calendar } from './Calendar';
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
           Welcome to hours tracker!
         </h1>
         <Calendar />
-        <label>Inpuput the hours your worked each day in military time format and separated by spaces:</label>
-        <input type="text" id="hourEnteries" style={{width: "185px"}} placeholder='08:00 09:00 08:30 06:15 08:15'></input>
+        <label>Input the hours your worked each day in military time format and separated by spaces:</label>
+        <input type="text" id="hourEnteries" className='hours-input' placeholder='08:00 09:00 08:30 06:15 08:15'></input>
         <button onClick={calculateHours}>Get total hours</button>
       </header>
     </div>
@@ -37,24 +38,6 @@ function parseTimeEntry(time) {
   let minutes = parseInt(time.split(":")[1]);
 
   return hours * 60 + minutes;
-}
-
-const CurrentDate = () => {
-  return(
-    <div>
-      <h2>Todays date: {Date()}</h2>
-    </div>
-  )
-}
-
-class Calendar extends React.Component {
-  render() {
-    return(
-      <div>
-        <CurrentDate />
-      </div>
-    )
-  }
 }
 
 export default App;
