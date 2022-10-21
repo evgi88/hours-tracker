@@ -3,8 +3,9 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 25vmin;
   pointer-events: none;
+  margin-top: -4cm;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -35,4 +36,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.hours-input {
+  width: 185px;
+  height: 30px;
+  margin: 8px;
 }
