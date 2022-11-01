@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Calendar } from './Calendar';
 
+var weekEntries = [];
 
 function App() {
   return (
@@ -17,24 +18,25 @@ function App() {
         <label>Input the hours your worked each day in military time format and separated by spaces:</label>
         <input type="text" id="hourEnteries" className='hours-input' placeholder='08:00 09:00 08:30 06:15 08:15'></input>
         <button onClick={calculateHours}>Get total hours</button>
-        <button onClick={saveTimeEntries}>Save time entries</button>
+        <button onClick={saveTimeEntries}>Save this weeks entries</button>
+        <button onClick={downloadEntries}>Download saved weekly entries</button>
       </header>
     </div>
   );
 }
 
 function calculateHours() {
-  let totalMinutes = document.getElementById("hourEnteries")
-    .value
-    .split(" ")
+  let totalMinutes = getTimeEntries()
     .map(parseTimeEntry)
     .reduce((minutes1, minutes2) => minutes1 + minutes2);
   
-  let minutes = totalMinutes % 60;
-  let hours = (totalMinutes - minutes) / 60   
-  alert(`Total hours: ${hours}:${minutes}`);
-
   return totalMinutes;
+}
+
+function getTimeEntries() {
+  return document.getElementById("hourEnteries")
+    .value
+    .split(" ");
 }
 
 function parseTimeEntry(time) {
@@ -49,17 +51,17 @@ function saveTimeEntries() {
     .value
     .split(" ")
   
-  persistData(
+  weekEntries.push(
     {
       "timeEntries": timeEntries,
-      "totalHoursWorked": calculateHours / 60,
-      "Date": Date.now(),
+      "totalHoursWorked": calculateHours() / 60,
+      "Date": Date(),
     }
   )
 }
 
-function persistData(data) {
-  const dataToPersist = JSON.stringify(data);
+function downloadEntries() {
+  const dataToPersist = JSON.stringify({weekEntries});
   const blob = new Blob([dataToPersist], { type: 'text/plain'});
   const url = URL.createObjectURL(blob);
 
